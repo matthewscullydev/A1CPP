@@ -6,8 +6,8 @@
 #include <istream>
 #include <string>
 
-std::fstream myFile;
-int globalvar = 0;
+std::ofstream myFile;
+int globalvar;
 unsigned int debug_dummy;
 bool file_logging = true;
 
@@ -15,7 +15,7 @@ void set_debug_environment(unsigned int debug_levels, bool file_logging) {
     if (debug_levels == PRINT_L1 || PRINT_L2 || PRINT_L3) {
         globalvar = debug_levels;
         file_logging = true;
-        myFile.open("test.log");
+        myFile.open("test.log", std::ios_base::app);
     } else if (debug_levels == PRINT_L0) {
         globalvar = debug_levels;
     }
